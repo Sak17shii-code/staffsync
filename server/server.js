@@ -168,10 +168,8 @@ app.use((err, _req, res, _next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-if (!process.env.VERCEL) {
-  connectDB()
-    .then(() => app.listen(PORT, () => console.log(`🚀 StaffSync API server running on port :${PORT}`)))
-    .catch((err) => console.error('Initial DB connection error:', err.message));
-}
+connectDB()
+  .then(() => app.listen(PORT, () => console.log(`🚀 StaffSync API server running on port :${PORT}`)))
+  .catch((err) => console.error('Initial DB connection error:', err.message));
 
 module.exports = app;
